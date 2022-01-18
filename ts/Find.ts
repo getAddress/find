@@ -117,18 +117,18 @@ export default class Find{
         }
     };
 
-    private setupEvents = (button:Button, input:Input) =>
+    private setupEvents =  (button:Button, input:Input) =>
     {
         input.onKeyPress(button.click);
 
-        button.onClick(()=>
+        button.onClick(async ()=>
         {
             let query = input.value;
             if(query && query !== this.input.config.label)
             {
                 button.disable();
                 this.clearAll();
-                this.lookup(query);
+                await this.lookup(query);
             }
             return false;
         });
