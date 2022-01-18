@@ -1,6 +1,6 @@
 {
   "name": "getaddress-find",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "main": "dist/getaddress-find.mjs",
   "type": "module",
@@ -54,6 +54,6 @@
     }
   },
   "dependencies": {
-    "getaddress-api": "^1.1.7"
+    "getaddress-api": "^1.1.8"
   }
 }

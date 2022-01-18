@@ -23,8 +23,6 @@ export class InputConfig extends Config
     class = "";
     id = "getaddress_input" + this.getIdSuffix();
     name = "getaddress_input" + this.getIdSuffix();
-    
-    
 }
 
 export class ButtonConfig extends Config
@@ -32,7 +30,6 @@ export class ButtonConfig extends Config
     
     label:string = "Search";
     id = "getaddress_button" + this.getIdSuffix();
-    name = "getaddress_button" + this.getIdSuffix();
     class = "";
     disabled_message= "Fetching Addresses...";
     
@@ -42,7 +39,6 @@ export class DropdownConfig extends Config
 {
     
     id="getaddress_dropdown" + this.getIdSuffix();
-    name="getaddress_dropdown" + this.getIdSuffix();
     class="";
     select_message="Select your Address";
     template:string|null=null;

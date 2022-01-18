@@ -17,7 +17,7 @@ export class InputConfig extends Config {
         this.muted_style = "color:#CBCBCB;";
         this.class = "";
         this.id = "getaddress_input" + this.getIdSuffix();
-        this.name = "getaddress_input";
+        this.name = "getaddress_input" + this.getIdSuffix();
     }
 }
 export class ButtonConfig extends Config {
