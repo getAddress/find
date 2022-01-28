@@ -102,11 +102,11 @@ getAddress.find(
 ```
 ## Events
 ```
-document.addEventListener("getaddress-find-lookup-success", function(e){
+document.addEventListener("getaddress-find-suggestions", function(e){
     console.log(e.suggestions);
 })
 
-document.addEventListener("getaddress-find-lookup-failed", function(e){
+document.addEventListener("getaddress-find-suggestions-failed", function(e){
     console.log(e.status);
     console.log(e.message);
 })
