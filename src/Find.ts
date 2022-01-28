@@ -1,13 +1,12 @@
-/* import {Suggestion} from './ClientTypes'; */
-import {LookupSuccessEvent,LookupFailedEvent,AddressSelectedEvent,
-ButtonConfig, InputConfig, DropdownConfig, ErrorMessgeConfig, 
+import {ButtonConfig, InputConfig, DropdownConfig, ErrorMessgeConfig, 
 OutputFieldConfig} from './Types';
-import Client, {Suggestion}  from 'getaddress-api';
+import Client, {AutocompleteOptions, Suggestion}  from 'getaddress-api';
 import  Button  from './Button';
 import  Input  from './Input';
 import Dropdown from './Dropdown';
 import ErrorMessage from './ErrorMessage'
 import OutputFields from './OutputFields';
+import { AddressSelectedEvent,AddressSelectedFailedEvent,SuggestionsEvent,SuggestionsFailedEvent } from './Events';
 
 export default class Find{
 
@@ -48,7 +47,7 @@ export default class Find{
     {
         const onChange = (async () => {
             
-            let id = this.dropdown.value;
+            let id = this.dropdown.getValue();
             if(id !== this.dropdown.firstOptionValue)
             {
                 let addressResult = await this.getAddress.get(id);
@@ -56,20 +55,13 @@ export default class Find{
                     let success = addressResult.toSuccess();
                     this.outputFields.bind(success.address);
                     
-                    var addressSelectedEvent = new AddressSelectedEvent("getaddress-address-selected",{bubbles:true});
-                    addressSelectedEvent.address = success.address;
-                    this.context.dispatchEvent(addressSelectedEvent);
+                    AddressSelectedEvent.dispatch(this.context,success.address);
                 }
                 else{
-                    
                     let failed = addressResult.toFailed();
-                    
                     this.errorMessage.setup(failed.status,failed.message);
 
-                    var lookupFailedEvent = new LookupFailedEvent("getaddress-address-selected-failed",{bubbles:true});
-                    lookupFailedEvent.status = failed.status;
-                    lookupFailedEvent.message = failed.message;
-                    this.context.dispatchEvent(lookupFailedEvent);
+                    AddressSelectedFailedEvent.dispatch(this.context,failed.status,failed.message);
                 }
             }
           
@@ -81,16 +73,19 @@ export default class Find{
    
     private lookup = async (query:string) => 
     {
-        let options:any = 
-        {
-            all:true,
-            template:this.dropdown.config.template,
-            top:null
-        };
-
-        options = Object.assign(options,this.autocomplete_options);
+        let autocompleteOptions = new AutocompleteOptions();
+        autocompleteOptions.all = true;
         
-        let result = await this.getAddress.autocomplete(query,options);
+        if(this.dropdown.config.template)
+        {
+            autocompleteOptions.template = this.dropdown.config.template;
+        }
+        
+        if(this.autocomplete_options){
+            autocompleteOptions = Object.assign(autocompleteOptions,this.autocomplete_options);
+        }
+
+        let result = await this.getAddress.autocomplete(query,autocompleteOptions);
         
         this.button.enable();
 
@@ -100,9 +95,7 @@ export default class Find{
             
             this.setupDropdown(success.suggestions);
 
-            var lookupSuccessEvent = new LookupSuccessEvent("getaddress-lookup-success",{bubbles:true});
-            lookupSuccessEvent.suggestions = success.suggestions;
-            this.context.dispatchEvent(lookupSuccessEvent);
+            SuggestionsEvent.dispatch(this.context,query,success.suggestions);
         }
         else
         {
@@ -110,10 +103,7 @@ export default class Find{
             
             this.errorMessage.setup(failed.status,failed.message);
 
-            var lookupFailedEvent = new LookupFailedEvent("getaddress-lookup-failed",{bubbles:true});
-            lookupFailedEvent.status = failed.status;
-            lookupFailedEvent.message = failed.message;
-            this.context.dispatchEvent(lookupFailedEvent);
+            SuggestionsFailedEvent.dispatch(this.context,query,failed.status,failed.message);
         }
     };
 
@@ -123,7 +113,7 @@ export default class Find{
 
         button.onClick(async ()=>
         {
-            let query = input.value;
+            let query = input.getValue();
             if(query && query !== this.input.config.label)
             {
                 button.disable();
@@ -134,6 +124,6 @@ export default class Find{
         });
     } 
  
-
+    
 }
 

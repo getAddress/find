@@ -54,21 +54,6 @@ export class ErrorMessgeConfig extends Config{
 
 
 
-export class AddressSelectedEvent extends Event
-{
-    address:AutocompleteAddress|null = null;
-}
-
-export class LookupSuccessEvent extends Event
-{
-    suggestions:Suggestion[] = [];
-}
-export class LookupFailedEvent extends Event
-{
-    status:number= 0;
-    message:string|null= null;
-}
-
 
 export class OutputFieldConfig
 {

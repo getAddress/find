@@ -72,11 +72,9 @@ export default class Input
         });
     }
 
-    get value()
-    {
-        
+    getValue =()=>{
         return this.inputElement.value;
-        
     }
+   
 
 }

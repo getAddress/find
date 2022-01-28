@@ -66,7 +66,8 @@ export default class Dropdown{
         }
     };
 
-    get value(){
+    
+    getValue =()=>{
         return this.selectElement!.value;
     }
 
