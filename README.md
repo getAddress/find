@@ -42,7 +42,6 @@ npm install getaddress-find
 The full list of options, and their defaults:
 ```
 getAddress.find(
-    {
         container_id:'postcode_lookup',
         api_key: 'API_KEY',
         options={
@@ -98,7 +97,7 @@ getAddress.find(
             get_url:undefined /* Local alterative get url (when API key is not used) */
           }
         }
-    });
+    );
 ```
 ## Events
 ```

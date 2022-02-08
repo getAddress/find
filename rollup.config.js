@@ -1,8 +1,9 @@
 import {terser} from 'rollup-plugin-terser';
-import dts from "rollup-plugin-dts";
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import {version} from "./package.json";
+import {version} from "./package.json"; 
 import ts from "rollup-plugin-ts";
+
+
 
 export default [
     
