@@ -17,21 +17,15 @@ export default [
     },
     {
         input: "src/GetAddress.ts",
-        output: [
+        output: 
             {
                 file:"dist/getaddress-find-" + version + ".js",
                 format:"iife", 
                 name:'getAddress',
                 sourcemap:  "inline"
-            },
-            {
-                file:"dist/getaddress-find.js",
-                format:"iife",
-                name:'getAddress',
-                sourcemap:  "inline"
             }
-        ],
-        plugins:[nodeResolve(),ts(
+        
+        ,plugins:[nodeResolve(),ts(
             {tsconfig: {
                 declaration: false
             }}
@@ -39,18 +33,12 @@ export default [
     },
     {
         input: "dist/getaddress-find.mjs",
-        output: [
+        output: 
             {
                 file:"dist/getaddress-find-" + version + ".min.js",
                 format:"iife",
                 name:'getAddress'
             },
-            {
-                file:"dist/getaddress-find.min.js",
-                format:"iife",
-                name:'getAddress'
-            }
-        ],
         plugins:[terser()]
     }
 ]
