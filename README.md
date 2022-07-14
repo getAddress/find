@@ -8,7 +8,7 @@ npm install getaddress-find
 ```
 ### Or CDN
 ```
-<script src="https://cdn.getaddress.io/scripts/getaddress-find-2.0.0.min.js"></script>
+<script src="https://cdn.getaddress.io/scripts/getaddress-find-2.0.3.min.js"></script>
 ```
 
 ## Usage
@@ -79,7 +79,8 @@ getAddress.find(
               id:'getaddress_button',  /* The id of the botton' */
               class:'',  /* The class of the botton' */
               label:'Search',  /* The label of the botton' */
-              disabled_message:'disabled message'  /* The disabled message of the botton' */
+              disabled_message:'disabled message',  /* The disabled message of the botton' */
+              clear_on_submit: true  /* Clear output fields on submit ' */
           },
           dropdown:{
               id:'getaddress_dropdown',  /* The id of the dropdown' */

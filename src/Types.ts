@@ -32,7 +32,7 @@ export class ButtonConfig extends Config
     id = "getaddress_button" + this.getIdSuffix();
     class = "";
     disabled_message= "Fetching Addresses...";
-    
+    clear_on_submit:boolean = true;
 }
 
 export class DropdownConfig extends Config
