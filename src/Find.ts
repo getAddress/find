@@ -53,6 +53,10 @@ export default class Find{
                 let addressResult = await this.getAddress.get(id);
                 if(addressResult.isSuccess){
                     let success = addressResult.toSuccess();
+                    if (!this.button.config.clear_on_submit)
+                    {
+                        this.clearAll();
+                    }
                     this.outputFields.bind(success.address);
                     
                     AddressSelectedEvent.dispatch(this.context,success.address);
@@ -117,7 +121,10 @@ export default class Find{
             if(query && query !== this.input.config.label)
             {
                 button.disable();
-                this.clearAll();
+                if(this.button.config.clear_on_submit)
+                {
+                    this.clearAll();
+                }
                 await this.lookup(query);
             }
             return false;

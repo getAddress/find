@@ -18,8 +18,9 @@ export class Config{
 
 export class InputConfig extends Config
 {
-    label:string = "Search..";
-    muted_style:string = "color:#CBCBCB;";
+    label:string = "";
+    placeholder:string = "Search..";
+    value:string = "";
     class = "";
     id = "getaddress_input" + this.getIdSuffix();
     name = "getaddress_input" + this.getIdSuffix();
@@ -32,7 +33,7 @@ export class ButtonConfig extends Config
     id = "getaddress_button" + this.getIdSuffix();
     class = "";
     disabled_message= "Fetching Addresses...";
-    
+    clear_on_submit:boolean = true;
 }
 
 export class DropdownConfig extends Config

@@ -8,7 +8,7 @@ npm install getaddress-find
 ```
 ### Or CDN
 ```
-<script src="https://cdn.getaddress.io/scripts/getaddress-find-2.0.0.min.js"></script>
+<script src="https://cdn.getaddress.io/scripts/getaddress-find-2.0.3.min.js"></script>
 ```
 
 ## Usage
@@ -73,13 +73,16 @@ getAddress.find(
               id:'getaddress_input',  /* The id of the textbox' */
               name:'getaddress_input',  /* The name of the textbox' */
               class:'',  /* The class of the textbox' */
-              label:'Enter your Postcode'  /* The label of the textbox' */
+              label:'Enter your Postcode',  /* The label of the textbox (deprecated, use placeholder)' */
+              placeholder:'Enter your Postcode',  /* The placeholder of the textbox' */
+              value:''  /* The initial value of the textbox' */
           },
           button:{
               id:'getaddress_button',  /* The id of the botton' */
               class:'',  /* The class of the botton' */
               label:'Search',  /* The label of the botton' */
-              disabled_message:'disabled message'  /* The disabled message of the botton' */
+              disabled_message:'disabled message',  /* The disabled message of the botton' */
+              clear_on_submit:true  /* Clear output fields on submit ' */
           },
           dropdown:{
               id:'getaddress_dropdown',  /* The id of the dropdown' */

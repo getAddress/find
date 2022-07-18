@@ -14,7 +14,8 @@ export default class Input
         let input = document.createElement("input");
         input.id = this.config.id;
         input.type = "text";
-        input.value = this.config.label;
+        input.placeholder = this.config.label !== '' ? this.config.label : this.config.placeholder;
+        input.value = this.config.value;
 
         if(this.config.class)
         {
@@ -24,27 +25,7 @@ export default class Input
         input.name = this.config.name;
         input.autocomplete = "off";
 
-        let styleAttr:Attr = this.getDefaultStyle();
-        input.attributes.setNamedItem(styleAttr);
-
         input.addEventListener("submit", ()=>{return false});
-        
-        input.addEventListener("focus", ()=>
-        {
-            input.removeAttribute('style');
-            if(input.value === this.config.label){
-                input.value = '';
-            }
-        });
-
-        input.addEventListener("blur", ()=>
-        {
-            if(!input.value){
-                input.value = this.config.label;
-                let styleAttr:Attr = this.getDefaultStyle();
-                input.attributes.setNamedItem(styleAttr);
-            }
-        });
         
         let container = document.getElementById(this.config.container_id);
         
@@ -53,13 +34,6 @@ export default class Input
         }
 
         return input;
-    }
-
-    private getDefaultStyle = ()=>
-    {
-        let styleAttr:Attr = document.createAttribute("style");
-        styleAttr.value = this.config.muted_style;
-        return styleAttr;
     }
 
     onKeyPress = (action:()=>void) =>
