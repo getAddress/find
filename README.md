@@ -7,12 +7,30 @@ Javascript - find address by postcode.
 npm install getaddress-find
 ```
 ### Or CDN
-```
+```html
 <script src="https://cdn.getaddress.io/scripts/getaddress-find-2.0.0.min.js"></script>
+```
+## Usage if you are using NPM install
+```js
+import * as getAddress from 'getaddress-find';
+
+() => (
+
+...
+
+getAddress.find(
+        container_id:'postcode_lookup',
+        api_key: 'API_KEY',
+        options);
+
+...
+
+)
+
 ```
 
 ## Usage
-```
+```html
   <div id="container_id"></div>  
   <br/>
 
@@ -40,7 +58,7 @@ npm install getaddress-find
 ```
 ## Options
 The full list of options, and their defaults:
-```
+```js
 getAddress.find(
         container_id:'postcode_lookup',
         api_key: 'API_KEY',
@@ -100,7 +118,7 @@ getAddress.find(
     );
 ```
 ## Events
-```
+```js
 document.addEventListener("getaddress-find-suggestions", function(e){
     console.log(e.suggestions);
 })
