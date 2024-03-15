@@ -16,6 +16,10 @@ export default class Input
         input.type = "text";
         input.value = this.config.label;
 
+        if(this.config.placeholder?.length > 0) {
+            input.placeholder = this.config.placeholder;
+        }
+
         if(this.config.class)
         {
             input.className = this.config.class;
@@ -24,28 +28,33 @@ export default class Input
         input.name = this.config.name;
         input.autocomplete = "off";
 
-        let styleAttr:Attr = this.getDefaultStyle();
-        input.attributes.setNamedItem(styleAttr);
-
         input.addEventListener("submit", ()=>{return false});
         
-        input.addEventListener("focus", ()=>
-        {
-            input.removeAttribute('style');
-            if(input.value === this.config.label){
-                input.value = '';
-            }
-        });
+        /**
+         * @deprecated The following event listeners are for backwards compatibility. The use of the placeholder attribute proves this functionality.
+         */
+        if(this.config.label?.length > 0) {
+            let styleAttr:Attr = this.getDefaultStyle();
+            input.attributes.setNamedItem(styleAttr);
 
-        input.addEventListener("blur", ()=>
-        {
-            if(!input.value){
-                input.value = this.config.label;
-                let styleAttr:Attr = this.getDefaultStyle();
-                input.attributes.setNamedItem(styleAttr);
-            }
-        });
-        
+            input.addEventListener("focus", ()=>
+            {
+                input.removeAttribute('style');
+                if(input.value === this.config.label){
+                    input.value = '';
+                }
+            });
+
+            input.addEventListener("blur", ()=>
+            {
+                if(!input.value){
+                    input.value = this.config.label;
+                    let styleAttr:Attr = this.getDefaultStyle();
+                    input.attributes.setNamedItem(styleAttr);
+                }
+            });
+        }
+
         let container = document.getElementById(this.config.container_id);
         
         if(container){

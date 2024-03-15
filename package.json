@@ -1,6 +1,6 @@
 {
   "name": "getaddress-find",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "GetAddress.io - Find by postcode plug-in",
   "main": "dist/getaddress-find.mjs",
   "type": "module",

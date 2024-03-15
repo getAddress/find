@@ -18,7 +18,11 @@ export class Config{
 
 export class InputConfig extends Config
 {
-    label:string = "Search..";
+    /**
+     * @deprecated Label should not be used, use placeholder instead. If you would like a label, use a label element.
+     */
+    label:string = "";
+    placeholder:string = "Enter your Postcode";
     muted_style:string = "color:#CBCBCB;";
     class = "";
     id = "getaddress_input" + this.getIdSuffix();
