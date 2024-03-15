@@ -73,7 +73,8 @@ getAddress.find(
               id:'getaddress_input',  /* The id of the textbox' */
               name:'getaddress_input',  /* The name of the textbox' */
               class:'',  /* The class of the textbox' */
-              label:'Enter your Postcode'  /* The label of the textbox' */
+              placeholder:'Enter your Postcode'  /* The placeholder text of the textbox' */
+              label:'Enter your Postcode'  /* (DEPRECATED - used placeholder instead ) - The label of the textbox' */
           },
           button:{
               id:'getaddress_button',  /* The id of the botton' */
