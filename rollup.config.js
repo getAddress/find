@@ -27,7 +27,7 @@ export default [
         ,plugins:[nodeResolve()]
     },
     {
-        input:"dist/getaddress-find-" + pkg.version + ".js",
+        input:"dist/getaddress-find-" + pkg.version + ".mjs",
         output: 
             {
                 file:"dist/getaddress-find-" + pkg.version + ".min.js",
