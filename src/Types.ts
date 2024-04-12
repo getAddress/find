@@ -1,4 +1,3 @@
-/* import {AutocompleteAddress,Suggestion} from './ClientTypes'; */
 import {AutocompleteAddress,Suggestion} from 'getaddress-api';
 
 export class Config{

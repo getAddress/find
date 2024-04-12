@@ -8,7 +8,7 @@ npm install getaddress-find
 ```
 ### Or CDN
 ```
-<script src="https://cdn.getaddress.io/scripts/getaddress-find-2.0.0.min.js"></script>
+<script src="https://cdn.getaddress.io/scripts/getaddress-find-2.1.0.min.js"></script>
 ```
 
 ## Usage

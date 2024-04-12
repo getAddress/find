@@ -73,7 +73,7 @@ export default class Find{
    
     private lookup = async (query:string) => 
     {
-        let autocompleteOptions = new AutocompleteOptions();
+        let autocompleteOptions:Partial<AutocompleteOptions> = {};
         autocompleteOptions.all = true;
         
         if(this.dropdown.config.template)

@@ -1,4 +1,3 @@
-/* import {Suggestion} from './ClientTypes'; */
 import {Suggestion} from 'getaddress-api';
 import {DropdownConfig} from './Types';
 

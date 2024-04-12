@@ -1,4 +1,3 @@
-/* import {AutocompleteAddress} from './ClientTypes'; */
 import {AutocompleteAddress} from 'getaddress-api';
 import {OutputFieldConfig} from './Types';
 
